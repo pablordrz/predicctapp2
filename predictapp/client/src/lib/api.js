@@ -34,6 +34,10 @@ export const api = {
 
   adminListMarkets: () => request('/admin/markets'),
   adminResolve: (id, outcome) => request(`/admin/markets/${id}/resolve`, { method: 'POST', body: { outcome } }),
+
+  leaderboard: () => request('/users/leaderboard', { auth: false }),
+  balanceHistory: () => request('/users/balance-history', { auth: false }),
+  myBets: () => request('/users/me/bets'),
 };
 
 export { getToken };

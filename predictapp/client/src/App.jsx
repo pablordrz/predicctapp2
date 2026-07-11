@@ -6,6 +6,8 @@ import CreateMarket from './pages/CreateMarket.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Admin from './pages/Admin.jsx';
+import Ranking from './pages/Ranking.jsx';
+import Portfolio from './pages/Portfolio.jsx';
 import { useAuth } from './lib/AuthContext.jsx';
 
 function Protected({ children }) {
@@ -31,6 +33,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/mercado/:id" element={<MarketDetail />} />
           <Route path="/crear" element={<Protected><CreateMarket /></Protected>} />
+          <Route path="/ranking" element={<Ranking />} />
+          <Route path="/cartera" element={<Protected><Portfolio /></Protected>} />
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Register />} />
           <Route path="/admin" element={<AdminOnly><Admin /></AdminOnly>} />

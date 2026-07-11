@@ -19,6 +19,8 @@ export default function Navbar() {
 
         <nav className="hidden sm:flex items-center gap-6 text-sm text-muted font-medium">
           <Link to="/" className="hover:text-fg transition-colors">Apuestas</Link>
+          <Link to="/ranking" className="hover:text-fg transition-colors">Ranking</Link>
+          {user && <Link to="/cartera" className="hover:text-fg transition-colors">Mi cartera</Link>}
           {user && <Link to="/crear" className="hover:text-fg transition-colors">Lanzar apuesta</Link>}
           {user?.is_admin && <Link to="/admin" className="hover:text-fg transition-colors">Consola root</Link>}
         </nav>
@@ -26,11 +28,11 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           {user ? (
             <>
-              <div className="hidden xs:flex items-center gap-1.5 bg-surface border border-border rounded-full pl-2 pr-3 py-1.5">
+              <Link to="/cartera" className="hidden xs:flex items-center gap-1.5 bg-surface border border-border rounded-full pl-2 pr-3 py-1.5 hover:border-accent/60 transition-colors">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold"></span>
                 <span className="font-mono text-sm tabular-num text-gold">{Math.round(user.points).toLocaleString('es-ES')}</span>
                 <span className="text-xs text-muted">pts</span>
-              </div>
+              </Link>
               <span className="hidden md:inline text-sm text-muted">@{user.username}</span>
               <button
                 onClick={() => { logout(); navigate('/'); }}
