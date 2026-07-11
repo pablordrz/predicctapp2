@@ -25,4 +25,4 @@ app.get('*', (req, res, next) => {
 });
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Vaticina server escuchando en puerto ${PORT}`));
+app.listen(PORT, () => console.log(`🐛 HackBet server escuchando en el puerto ${PORT} (sin dinero real, lo prometo)`));

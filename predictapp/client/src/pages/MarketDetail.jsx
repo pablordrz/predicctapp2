@@ -74,7 +74,7 @@ export default function MarketDetail() {
   return (
     <div className="grid lg:grid-cols-[1fr_340px] gap-8">
       <div>
-        <Link to="/" className="text-sm text-muted hover:text-fg transition-colors">← Volver a mercados</Link>
+        <Link to="/" className="text-sm text-muted hover:text-fg transition-colors">← Volver a las apuestas</Link>
 
         <div className="mt-4 flex items-center gap-2">
           <span className="text-xs font-mono uppercase tracking-wider text-accent2 bg-accent/10 px-2 py-1 rounded-md border border-accent/20">
@@ -105,17 +105,17 @@ export default function MarketDetail() {
             <input
               value={commentText}
               onChange={e => setCommentText(e.target.value)}
-              placeholder="Comparte tu análisis…"
+              placeholder="Suelta tu opinión (con fundamento o sin él)…"
               className="flex-1 bg-surface border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent"
             />
-            <button className="px-4 py-2 rounded-lg bg-accent hover:bg-accent2 transition-colors text-sm font-medium">Publicar</button>
+            <button className="px-4 py-2 rounded-lg bg-accent hover:bg-accent2 transition-colors text-sm font-medium text-ink">Publicar</button>
           </form>
         ) : (
           <p className="text-sm text-muted mb-5"><Link to="/login" className="text-accent2 hover:underline">Inicia sesión</Link> para comentar.</p>
         )}
 
         <div className="space-y-3">
-          {comments.length === 0 && <p className="text-sm text-muted">Aún no hay comentarios. Sé el primero en opinar.</p>}
+          {comments.length === 0 && <p className="text-sm text-muted">Aquí no ha comentado nadie todavía. Sé el primero en opinar.</p>}
           {comments.map(c => (
             <div key={c.id} className="bg-surface border border-border rounded-xl px-4 py-3">
               <div className="flex items-center justify-between mb-1">
@@ -131,13 +131,13 @@ export default function MarketDetail() {
       <aside className="space-y-5">
         <div className="bg-surface border border-border rounded-2xl p-5 sticky top-20">
           <h3 className="font-display font-semibold mb-4">
-            {resolved ? 'Mercado resuelto' : closed ? 'Pendiente de resolución' : 'Haz tu apuesta'}
+            {resolved ? 'Apuesta resuelta' : closed ? 'Pendiente de resolución' : 'Haz tu apuesta'}
           </h3>
 
           {resolved ? (
-            <p className="text-sm text-muted">Este mercado ya fue resuelto por un administrador. Consulta abajo el histórico de apuestas.</p>
+            <p className="text-sm text-muted">Esta apuesta ya fue resuelta por un admin. Abajo tienes el historial, para bien o para mal.</p>
           ) : closed ? (
-            <p className="text-sm text-muted">El plazo para apostar terminó. Un administrador resolverá el resultado pronto.</p>
+            <p className="text-sm text-muted">Se acabó el plazo. Un admin resolverá esto en cuanto se acuerde.</p>
           ) : !user ? (
             <p className="text-sm text-muted"><Link to="/login" className="text-accent2 hover:underline">Inicia sesión</Link> para participar con tus puntos.</p>
           ) : (
@@ -170,7 +170,7 @@ export default function MarketDetail() {
                 </div>
               )}
 
-              <button disabled={busy} className="w-full bg-accent hover:bg-accent2 transition-colors py-2.5 rounded-lg font-medium disabled:opacity-50">
+              <button disabled={busy} className="w-full bg-accent hover:bg-accent2 transition-colors py-2.5 rounded-lg font-medium disabled:opacity-50 text-ink">
                 {busy ? 'Enviando…' : `Apostar a ${side === 'YES' ? 'SÍ' : 'NO'}`}
               </button>
             </form>
@@ -180,7 +180,7 @@ export default function MarketDetail() {
         <div className="bg-surface border border-border rounded-2xl p-5">
           <h3 className="font-display font-semibold mb-3 text-sm">Actividad reciente</h3>
           <div className="space-y-2 max-h-80 overflow-y-auto pr-1">
-            {bets.length === 0 && <p className="text-sm text-muted">Nadie ha apostado todavía.</p>}
+            {bets.length === 0 && <p className="text-sm text-muted">Nadie se ha mojado todavía.</p>}
             {bets.map(b => (
               <div key={b.id} className="flex items-center justify-between text-sm">
                 <span className="text-muted truncate">@{b.username}</span>

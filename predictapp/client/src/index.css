@@ -12,10 +12,28 @@ body {
   font-family: 'Inter', sans-serif;
   color: #EDEFFB;
   background-image:
-    radial-gradient(circle at 15% 0%, rgba(108,92,231,0.16), transparent 42%),
+    radial-gradient(circle at 15% 0%, rgba(92,231,203,0.14), transparent 42%),
     radial-gradient(circle at 85% 8%, rgba(34,201,126,0.10), transparent 38%);
   background-attachment: fixed;
   min-height: 100vh;
+  position: relative;
+}
+
+/* Faint CRT scanlines — the one texture we allow ourselves, everywhere, quietly */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.018) 0px,
+    rgba(255,255,255,0.018) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
 }
 
 .tabular-num { font-variant-numeric: tabular-nums; }
@@ -26,7 +44,47 @@ body {
 }
 .live-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
 
+/* Blinking block cursor, like a shell prompt waiting for input */
+@keyframes blink-cursor {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.cursor-blink {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  background: currentColor;
+  vertical-align: -0.15em;
+  animation: blink-cursor 1s step-end infinite;
+}
+
+/* Terminal window chrome, reused for the hero and other framed blocks */
+.term-window {
+  background: #0E1220;
+  border: 1px solid #242A4A;
+  border-radius: 0.85rem;
+  overflow: hidden;
+}
+.term-topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.8rem;
+  background: #131728;
+  border-bottom: 1px solid #242A4A;
+}
+.term-dot { width: 0.55rem; height: 0.55rem; border-radius: 999px; }
+
+/* Subtle glitch flicker on hover, kept to headings so it stays a signature, not noise */
+@keyframes glitch-flicker {
+  0%, 100% { text-shadow: none; transform: translate(0,0); }
+  20% { text-shadow: -1px 0 #F1477A, 1px 0 #5CE7CB; transform: translate(-0.5px,0); }
+  40% { text-shadow: 1px 0 #5CE7CB, -1px 0 #F1477A; transform: translate(0.5px,0); }
+  60% { text-shadow: none; transform: translate(0,0); }
+}
+.glitch-hover:hover { animation: glitch-flicker 0.35s linear 1; }
+
 @media (prefers-reduced-motion: reduce) {
-  .live-dot { animation: none; }
+  .live-dot, .cursor-blink, .glitch-hover:hover { animation: none; }
   * { transition: none !important; }
 }

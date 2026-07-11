@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/api';
 
-const CATEGORIES = ['General', 'Deportes', 'Política', 'Tecnología', 'Entretenimiento', 'Universidad', 'Otros'];
+const CATEGORIES = ['Bootcamp', 'Hacking & CTF', 'Clase', 'Deportes', 'Política', 'Fiesta', 'Otros'];
 
 export default function CreateMarket() {
   const [question, setQuestion] = useState('');
@@ -32,8 +32,8 @@ export default function CreateMarket() {
 
   return (
     <div className="max-w-xl mx-auto">
-      <h1 className="font-display font-semibold text-2xl mb-1">Crear apuesta</h1>
-      <p className="text-muted text-sm mb-6">Formula una pregunta binaria (Sí/No). La comunidad apostará puntos a favor de cada resultado.</p>
+      <h1 className="font-display font-semibold text-2xl mb-1">Nueva apuesta</h1>
+      <p className="text-muted text-sm mb-6">Formula una pregunta random sobre el bootcamp (o sobre la vida). La peña apuesta puntos a Sí o No — sin dinero, sin drama (bueno, un poco de drama sí).</p>
 
       <form onSubmit={submit} className="bg-surface border border-border rounded-2xl p-6 space-y-5">
         {error && <div className="text-no text-sm bg-no/10 border border-no/20 rounded-lg px-3 py-2">{error}</div>}
@@ -41,14 +41,14 @@ export default function CreateMarket() {
         <div>
           <label className="text-xs text-muted uppercase tracking-wide">Pregunta</label>
           <input value={question} onChange={e => setQuestion(e.target.value)} required minLength={5} maxLength={180}
-            placeholder="¿Aprobaré el examen de Criptografía con nota ≥ 8?"
+            placeholder="¿Aprobará Javi el examen de Criptografía sin hacer trampas... esta vez?"
             className="mt-1 w-full bg-surface2 border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent" />
         </div>
 
         <div>
           <label className="text-xs text-muted uppercase tracking-wide">Descripción (opcional)</label>
           <textarea value={description} onChange={e => setDescription(e.target.value)} rows={3} maxLength={500}
-            placeholder="Añade contexto o los criterios exactos de resolución…"
+            placeholder="Contexto, pruebas, capturas de pantalla del cotilleo… lo que sea para que no haya drama al resolver."
             className="mt-1 w-full bg-surface2 border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent resize-none" />
         </div>
 
@@ -68,11 +68,11 @@ export default function CreateMarket() {
         </div>
 
         <p className="text-xs text-muted bg-surface2 border border-border rounded-lg px-3 py-2">
-          Las apuestas realizadas durante el último minuto antes de que un admin resuelva el mercado se cancelan y se devuelven automáticamente.
+          Truco anti-tongo: las apuestas de último minuto antes de resolver se cancelan solas y se devuelven los puntos.
         </p>
 
-        <button disabled={loading} className="w-full bg-accent hover:bg-accent2 transition-colors py-2.5 rounded-lg font-medium disabled:opacity-50">
-          {loading ? 'Creando…' : 'Publicar apuesta'}
+        <button disabled={loading} className="w-full bg-accent hover:bg-accent2 transition-colors py-2.5 rounded-lg font-medium disabled:opacity-50 text-ink">
+          {loading ? 'Desplegando…' : 'Lanzar apuesta'}
         </button>
       </form>
     </div>

@@ -1,7 +1,7 @@
 const BASE = '/api';
 
 function getToken() {
-  return localStorage.getItem('vaticina_token');
+  return localStorage.getItem('hackbet_token');
 }
 
 async function request(path, { method = 'GET', body, auth = true } = {}) {

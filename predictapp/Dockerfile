@@ -21,7 +21,7 @@ COPY --from=client-build /app/client/dist ./public
 
 ENV NODE_ENV=production
 ENV PORT=4000
-ENV DB_PATH=/app/data/vaticina.db
+ENV DB_PATH=/app/data/hackbet.db
 
 EXPOSE 4000
 VOLUME ["/app/data"]

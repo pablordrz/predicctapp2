@@ -95,7 +95,7 @@ router.post('/:id/bet', auth(true), (req, res) => {
   if (!amt || amt <= 0) return res.status(400).json({ error: 'Cantidad inválida' });
 
   if (new Date(market.close_time).getTime() <= Date.now()) {
-    return res.status(400).json({ error: 'El plazo para apostar en este mercado ha finalizado' });
+    return res.status(400).json({ error: 'El plazo para apostar en esta apuesta ha finalizado' });
   }
 
   const user = db.prepare('SELECT * FROM users WHERE id = ?').get(req.user.id);

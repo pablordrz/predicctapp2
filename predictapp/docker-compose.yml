@@ -1,18 +1,18 @@
 services:
-  vaticina:
+  hackbet:
     build: .
-    container_name: vaticina
+    container_name: hackbet
     ports:
       - "4000:4000"
     environment:
       - PORT=4000
       - JWT_SECRET=cambia-este-secreto-en-produccion
-      - ADMIN_USERNAME=PabloR
+      - ADMIN_USERNAME=PabloR-ADMIN
       - ADMIN_PASSWORD=T3stP4ss!
-      - DB_PATH=/app/data/vaticina.db
+      - DB_PATH=/app/data/hackbet.db
     volumes:
-      - vaticina_data:/app/data
+      - hackbet_data:/app/data
     restart: unless-stopped
 
 volumes:
-  vaticina_data:
+  hackbet_data:

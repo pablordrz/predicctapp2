@@ -38,7 +38,7 @@ export default function App() {
         </Routes>
       </main>
       <footer className="border-t border-border/60 py-6 text-center text-xs text-muted font-mono">
-        VATICINA — mercado de predicciones con puntos ficticios. Sin dinero real.
+        $ HACKBET --version → puntos ficticios, cero dinero real, mucho postureo de bootcamp
       </footer>
     </div>
   );

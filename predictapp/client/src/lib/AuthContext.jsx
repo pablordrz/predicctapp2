@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
       const { user } = await api.me();
       setUser(user);
     } catch {
-      localStorage.removeItem('vaticina_token');
+      localStorage.removeItem('hackbet_token');
       setUser(null);
     } finally {
       setLoading(false);
@@ -24,18 +24,18 @@ export function AuthProvider({ children }) {
 
   const login = async (username, password) => {
     const { token, user } = await api.login(username, password);
-    localStorage.setItem('vaticina_token', token);
+    localStorage.setItem('hackbet_token', token);
     setUser(user);
   };
 
   const register = async (username, password) => {
     const { token, user } = await api.register(username, password);
-    localStorage.setItem('vaticina_token', token);
+    localStorage.setItem('hackbet_token', token);
     setUser(user);
   };
 
   const logout = () => {
-    localStorage.removeItem('vaticina_token');
+    localStorage.removeItem('hackbet_token');
     setUser(null);
   };
 

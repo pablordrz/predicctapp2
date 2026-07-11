@@ -1,5 +1,5 @@
 {
-  "name": "vaticina-server",
+  "name": "hackbet-server",
   "version": "1.0.0",
   "type": "commonjs",
   "main": "index.js",

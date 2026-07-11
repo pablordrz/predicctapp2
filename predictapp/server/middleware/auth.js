@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const db = require('../db');
 
-const SECRET = process.env.JWT_SECRET || 'vaticina-dev-secret-change-me';
+const SECRET = process.env.JWT_SECRET || 'hackbet-dev-secret-change-me';
 
 function auth(required = true) {
   return (req, res, next) => {

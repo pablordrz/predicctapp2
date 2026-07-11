@@ -26,8 +26,8 @@ export default function Login() {
 
   return (
     <div className="max-w-sm mx-auto mt-10">
-      <h1 className="font-display font-semibold text-2xl mb-1">Bienvenido de nuevo</h1>
-      <p className="text-muted text-sm mb-6">Entra para seguir apostando con tus puntos.</p>
+      <h1 className="font-display font-semibold text-2xl mb-1">Ey, otra vez tú 👋</h1>
+      <p className="text-muted text-sm mb-6">Entra y sigue apostando puntos que no valen nada (pero que sí importan mucho).</p>
 
       <form onSubmit={submit} className="bg-surface border border-border rounded-2xl p-6 space-y-4">
         {error && <div className="text-no text-sm bg-no/10 border border-no/20 rounded-lg px-3 py-2">{error}</div>}
@@ -41,12 +41,12 @@ export default function Login() {
           <input type="password" value={password} onChange={e => setPassword(e.target.value)} required
             className="mt-1 w-full bg-surface2 border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-accent" />
         </div>
-        <button disabled={loading} className="w-full bg-accent hover:bg-accent2 transition-colors py-2.5 rounded-lg font-medium disabled:opacity-50">
+        <button disabled={loading} className="w-full bg-accent hover:bg-accent2 transition-colors py-2.5 rounded-lg font-medium disabled:opacity-50 text-ink">
           {loading ? 'Entrando…' : 'Entrar'}
         </button>
       </form>
       <p className="text-sm text-muted mt-4 text-center">
-        ¿Aún no tienes cuenta? <Link to="/registro" className="text-accent2 hover:underline">Regístrate</Link>
+        ¿Sin cuenta todavía? <Link to="/registro" className="text-accent2 hover:underline">Únete al caos</Link>
       </p>
     </div>
   );
